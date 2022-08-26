@@ -2,7 +2,7 @@ import dbConnect from './dbConnect.js'
 
 export async function getTasks(req,res){// later add "by user id" to this... 
     const db = dbConnect()
-   const collection = await db.collection('TASK').get() 
+   const collection = await db.collection('tasks').get() 
    .catch(err => res.status(500).send(err));
    const tasks = collection.docs.map(doc=>{
     // return {...doc.datat(), id: doc.id}
@@ -10,7 +10,7 @@ export async function getTasks(req,res){// later add "by user id" to this...
     task.id = doc.id
     return task;
    })
-    res.send('TASKS');
+    res.send(tasks);
 }
 
 export async function createTask(req,res){ // later we will add userId and timestamp....
