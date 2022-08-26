@@ -24,6 +24,7 @@ export async function createTask(req,res){ // later we will add userId and times
    .catch(err => res.status(500).send(err))
     res.status(201)
     getTasks(req,res) // send back full list of task...
+}
 
 export function updateTask(req,res){
     const taskUpdate = req.body;
